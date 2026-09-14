@@ -1,0 +1,84 @@
+CREATE TABLE precincts (
+    precinct_id INT PRIMARY KEY,
+    precinct_code VARCHAR(20) UNIQUE NOT NULL,
+    precinct_name VARCHAR(150) NOT NULL,
+    polling_center_name VARCHAR(150) NOT NULL,
+    address VARCHAR(255),
+    city VARCHAR(100),
+    region VARCHAR(100),
+    capacity INT
+);
+
+CREATE TABLE officers (
+    officer_id INT PRIMARY KEY,
+    employee_code VARCHAR(20) UNIQUE NOT NULL,
+    full_name VARCHAR(150) NOT NULL,
+    role VARCHAR(50) CHECK (role IN ('REGISTRAR','REVIEWER','SUPERVISOR')),
+    precinct_id INT,
+    email VARCHAR(100),
+    active BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY (precinct_id) REFERENCES precincts(precinct_id)
+);
+
+CREATE TABLE voters (
+    voter_id INT PRIMARY KEY,
+    national_id VARCHAR(20) UNIQUE NOT NULL,
+    first_name VARCHAR(100) NOT NULL,
+    middle_name VARCHAR(100),
+    last_name VARCHAR(100) NOT NULL,
+    date_of_birth DATE NOT NULL,
+    gender VARCHAR(10),
+    address_line VARCHAR(255),
+    contact_number VARCHAR(20),
+    email VARCHAR(100),
+    precinct_id INT,
+    registration_status VARCHAR(20) DEFAULT 'ACTIVE'
+        CHECK (registration_status IN ('ACTIVE','PENDING','FLAGGED','INACTIVE')),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (precinct_id) REFERENCES precincts(precinct_id)
+);
+
+CREATE TABLE correction_requests (
+    request_id INT PRIMARY KEY,
+    voter_id INT NOT NULL,
+    field_to_correct VARCHAR(50) NOT NULL
+        CHECK (field_to_correct IN ('NAME','DOB','ADDRESS','GENDER','PRECINCT')),
+    old_value VARCHAR(255),
+    new_value VARCHAR(255) NOT NULL,
+    reason VARCHAR(255),
+    status VARCHAR(20) DEFAULT 'PENDING'
+        CHECK (status IN ('PENDING','UNDER_REVIEW','APPROVED','REJECTED')),
+    submitted_by INT,
+    reviewed_by INT,
+    submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    reviewed_at TIMESTAMP,
+    priority VARCHAR(10) DEFAULT 'NORMAL' CHECK (priority IN ('LOW','NORMAL','URGENT')),
+    FOREIGN KEY (voter_id) REFERENCES voters(voter_id),
+    FOREIGN KEY (submitted_by) REFERENCES voters(voter_id),
+    FOREIGN KEY (reviewed_by) REFERENCES officers(officer_id)
+);
+
+CREATE TABLE verification_documents (
+    document_id INT PRIMARY KEY,
+    request_id INT NOT NULL,
+    document_type VARCHAR(50)
+        CHECK (document_type IN ('BIRTH_CERT','GOV_ID','UTILITY_BILL','AFFIDAVIT')),
+    document_reference VARCHAR(150),
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    verified BOOLEAN DEFAULT FALSE,
+    FOREIGN KEY (request_id) REFERENCES correction_requests(request_id)
+);
+
+CREATE TABLE correction_history (
+    history_id INT PRIMARY KEY,
+    request_id INT NOT NULL,
+    voter_id INT NOT NULL,
+    field_changed VARCHAR(50),
+    old_value VARCHAR(255),
+    new_value VARCHAR(255),
+    changed_by INT,
+    changed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (request_id) REFERENCES correction_requests(request_id),
+    FOREIGN KEY (voter_id) REFERENCES voters(voter_id),
+    FOREIGN KEY (changed_by) REFERENCES officers(officer_id)
+);
