@@ -1,0 +1,83 @@
+-- ============================================
+-- PRECINCTS
+-- ============================================
+INSERT INTO precincts VALUES
+(5, 'PRC-005', 'District 5 - Central', 'Central Public Library', '15 Mabini St', 'Springfield', 'Region A', 450),
+(6, 'PRC-006', 'District 6 - Northgate', 'Northgate Barangay Hall', '3 Del Pilar St', 'Rivertown', 'Region B', 300),
+(7, 'PRC-007', 'District 7 - Lakeside', 'Lakeside National High School', '221 Magsaysay Ave', 'Lakeview', 'Region C', 700),
+(8, 'PRC-008', 'District 8 - Hilltop', 'Hilltop Multipurpose Gym', '9 Katipunan Rd', 'Lakeview', 'Region C', 380);
+
+-- ============================================
+-- OFFICERS
+-- ============================================
+INSERT INTO officers VALUES
+(5, 'EMP-1005', 'Diana Fernandez', 'REVIEWER', 5, 'dfernandez@electoral.gov', TRUE),
+(6, 'EMP-1006', 'Roberto Aquino', 'REGISTRAR', 6, 'raquino@electoral.gov', TRUE),
+(7, 'EMP-1007', 'Sophia Tan', 'REVIEWER', 7, 'stan@electoral.gov', TRUE),
+(8, 'EMP-1008', 'Leo Mendoza', 'SUPERVISOR', 8, 'lmendoza@electoral.gov', TRUE),
+(9, 'EMP-1009', 'Grace Villareal', 'REVIEWER', 5, 'gvillareal@electoral.gov', FALSE);
+
+-- ============================================
+--  VOTERS (20 records, mix of clean and error-prone entries)
+-- ============================================
+INSERT INTO voters VALUES
+(106, 'NID-00006', 'Kristine', 'D', 'Bautistaa', '1995-03-11', 'F', '10 Rizal Ext, Lakeview', '09181234501', 'kbautista@mail.com', 7, 'FLAGGED', CURRENT_TIMESTAMP),
+(107, 'NID-00007', 'Marc', NULL, 'Salazar', '1988-09-25', 'M', '22 Bonifacio Rd, Lakeview', '09181234502', 'msalazar@mail.com', 8, 'ACTIVE', CURRENT_TIMESTAMP),
+(108, 'NID-00008', 'Patricai', 'E', 'Gomez', '1999-12-05', 'F', '5 Luna St, Springfield', '09181234503', 'pgomez@mail.com', 5, 'FLAGGED', CURRENT_TIMESTAMP),
+(109, 'NID-00009', 'Andres', NULL, 'Villanueva', '1975-06-17', 'M', '81 Mabini St, Rivertown', '09181234504', 'avillanueva@mail.com', 6, 'ACTIVE', CURRENT_TIMESTAMP),
+(110, 'NID-00010', 'Bianca', 'F', 'Ocampoo', '1992-04-29', 'F', '14 Aguinaldo St, Springfield', '09181234505', 'bocampo@mail.com', 1, 'FLAGGED', CURRENT_TIMESTAMP),
+(111, 'NID-00011', 'Rafael', NULL, 'Navarro', '1983-08-02', 'M', '67 Quezon Ave, Rivertown', '09181234506', 'rnavarro@mail.com', 3, 'ACTIVE', CURRENT_TIMESTAMP),
+(112, 'NID-00012', 'Camille', 'G', 'Ramoss', '1997-01-19', 'F', '9 Del Pilar St, Lakeview', '09181234507', 'cramos@mail.com', 8, 'FLAGGED', CURRENT_TIMESTAMP),
+(113, 'NID-00013', 'Diego', NULL, 'Castillo', '1991-10-10', 'M', '33 Pine Rd, Rivertown', '09181234508', 'dcastillo@mail.com', 4, 'ACTIVE', CURRENT_TIMESTAMP),
+(114, 'NID-00014', 'Isabel', 'H', 'Marquez', '1986-02-14', 'F', '48 Oak Ave, Springfield', '09181234509', 'imarquez@mail.com', 2, 'ACTIVE', CURRENT_TIMESTAMP),
+(115, 'NID-00015', 'Gabriel', NULL, 'Pascuall', '2001-07-22', 'M', '19 Katipunan Rd, Lakeview', '09181234510', 'gpascual@mail.com', 8, 'FLAGGED', CURRENT_TIMESTAMP),
+(116, 'NID-00016', 'Louisa', 'I', 'Domingo', '1994-11-30', 'F', '27 Magsaysay Ave, Lakeview', '09181234511', 'ldomingo@mail.com', 7, 'ACTIVE', CURRENT_TIMESTAMP),
+(117, 'NID-00017', 'Emilio', NULL, 'Fajardoo', '1980-05-08', 'M', '52 Rizal St, Springfield', '09181234512', 'efajardo@mail.com', 1, 'FLAGGED', CURRENT_TIMESTAMP),
+(118, 'NID-00018', 'Teresa', 'J', 'Valdez', '1989-03-27', 'F', '71 Bonifacio St, Springfield', '09181234513', 'tvaldez@mail.com', 5, 'ACTIVE', CURRENT_TIMESTAMP),
+(119, 'NID-00019', 'Vicente', NULL, 'Herrera', '1996-09-15', 'M', '13 Elm St, Rivertown', '09181234514', 'vherrera@mail.com', 6, 'ACTIVE', CURRENT_TIMESTAMP),
+(120, 'NID-00020', 'Natalia', 'K', 'Cruzz', '1998-12-21', 'F', '60 Luna St, Springfield', '09181234515', 'ncruz@mail.com', 2, 'FLAGGED', CURRENT_TIMESTAMP),
+(121, 'NID-00021', 'Fernando', NULL, 'Aban', '1979-01-04', 'M', '25 Main St, Springfield', '09181234516', 'faban@mail.com', 1, 'ACTIVE', CURRENT_TIMESTAMP),
+(122, 'NID-00022', 'Rosario', 'L', 'Del Rosario', '1984-06-30', 'F', '38 Pine Rd, Rivertown', '09181234517', 'rdelrosario@mail.com', 4, 'ACTIVE', CURRENT_TIMESTAMP),
+(123, 'NID-00023', 'Hector', NULL, 'Espinozaa', '1993-04-18', 'M', '44 Katipunan Rd, Lakeview', '09181234518', 'hespinoza@mail.com', 8, 'FLAGGED', CURRENT_TIMESTAMP),
+(124, 'NID-00024', 'Veronica', 'M', 'Lim', '1990-08-09', 'F', '17 Magsaysay Ave, Lakeview', '09181234519', 'vlim@mail.com', 7, 'ACTIVE', CURRENT_TIMESTAMP),
+(125, 'NID-00025', 'Alfonso', NULL, 'Guerrero', '1987-10-23', 'M', '8 Mabini St, Springfield', '09181234520', 'aguerrero@mail.com', 5, 'ACTIVE', CURRENT_TIMESTAMP);
+
+-- ============================================
+-- CORRECTION REQUESTS
+-- ============================================
+INSERT INTO correction_requests VALUES
+(1006, 106, 'NAME', 'Kristine D Bautistaa', 'Kristine D Bautista', 'Extra letter in surname from registration clerk error', 'PENDING', 106, NULL, CURRENT_TIMESTAMP, NULL, 'URGENT'),
+(1007, 108, 'NAME', 'Patricai E Gomez', 'Patricia E Gomez', 'Transposed letters in first name', 'PENDING', 108, NULL, CURRENT_TIMESTAMP, NULL, 'URGENT'),
+(1008, 110, 'NAME', 'Bianca F Ocampoo', 'Bianca F Ocampo', 'Extra letter in surname', 'UNDER_REVIEW', 110, 2, CURRENT_TIMESTAMP, NULL, 'URGENT'),
+(1009, 112, 'NAME', 'Camille G Ramoss', 'Camille G Ramos', 'Duplicate letter typo', 'PENDING', 112, NULL, CURRENT_TIMESTAMP, NULL, 'URGENT'),
+(1010, 115, 'NAME', 'Gabriel Pascuall', 'Gabriel Pascual', 'Double L typo from online form', 'UNDER_REVIEW', 115, 7, CURRENT_TIMESTAMP, NULL, 'URGENT'),
+(1011, 117, 'NAME', 'Emilio Fajardoo', 'Emilio Fajardo', 'Extra vowel typo', 'PENDING', 117, NULL, CURRENT_TIMESTAMP, NULL, 'NORMAL'),
+(1012, 120, 'NAME', 'Natalia K Cruzz', 'Natalia K Cruz', 'Extra letter typo in surname', 'APPROVED', 120, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'URGENT'),
+(1013, 123, 'NAME', 'Hector Espinozaa', 'Hector Espinoza', 'Extra letter typo', 'PENDING', 123, NULL, CURRENT_TIMESTAMP, NULL, 'URGENT'),
+(1014, 114, 'ADDRESS', '48 Oak Ave, Springfield', '48-B Oak Ave, Springfield', 'Unit number missing on original form', 'APPROVED', 114, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'NORMAL'),
+(1015, 119, 'GENDER', 'F', 'M', 'Gender field incorrectly encoded at registration', 'REJECTED', 119, 6, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'LOW'),
+(1016, 122, 'DOB', '1984-06-30', '1984-06-13', 'Day/month swapped during data entry', 'APPROVED', 122, 4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 'NORMAL'),
+(1017, 111, 'PRECINCT', '3', '4', 'Voter relocated within district before deadline', 'PENDING', 111, NULL, CURRENT_TIMESTAMP, NULL, 'NORMAL');
+
+-- ============================================
+-- VERIFICATION DOCUMENTS
+-- ============================================
+INSERT INTO verification_documents VALUES
+(6, 1006, 'GOV_ID', 'ID-2024-0201', CURRENT_TIMESTAMP, TRUE),
+(7, 1007, 'BIRTH_CERT', 'BC-2024-0455', CURRENT_TIMESTAMP, FALSE),
+(8, 1008, 'GOV_ID', 'ID-2024-0287', CURRENT_TIMESTAMP, TRUE),
+(9, 1009, 'AFFIDAVIT', 'AFF-2024-0119', CURRENT_TIMESTAMP, FALSE),
+(10, 1010, 'GOV_ID', 'ID-2024-0333', CURRENT_TIMESTAMP, TRUE),
+(11, 1011, 'BIRTH_CERT', 'BC-2024-0512', CURRENT_TIMESTAMP, FALSE),
+(12, 1012, 'GOV_ID', 'ID-2024-0398', CURRENT_TIMESTAMP, TRUE),
+(13, 1013, 'AFFIDAVIT', 'AFF-2024-0147', CURRENT_TIMESTAMP, FALSE),
+(14, 1014, 'UTILITY_BILL', 'UB-2024-0076', CURRENT_TIMESTAMP, TRUE),
+(15, 1016, 'BIRTH_CERT', 'BC-2024-0609', CURRENT_TIMESTAMP, TRUE);
+
+-- ============================================
+-- CORRECTION HISTORY (approved requests only)
+-- ============================================
+INSERT INTO correction_history VALUES
+(3, 1012, 120, 'NAME', 'Natalia K Cruzz', 'Natalia K Cruz', 3, CURRENT_TIMESTAMP),
+(4, 1014, 114, 'ADDRESS', '48 Oak Ave, Springfield', '48-B Oak Ave, Springfield', 2, CURRENT_TIMESTAMP),
+(5, 1016, 122, 'DOB', '1984-06-30', '1984-06-13', 4, CURRENT_TIMESTAMP);
